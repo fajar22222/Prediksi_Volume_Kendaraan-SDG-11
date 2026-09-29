@@ -27,7 +27,7 @@ Penerapan Linear Regression diharapkan dapat membantu memberikan perkiraan volum
 | No. | Nama                | NIM       |
 | --- | ------------------  | ----------|
 | 1   | Sindi Aulia         | F1G125077 |
-| 2   | Kalyn Renanda Putri | F1G125035 |
+| 2   | Kallyn Renanda Putri | F1G125035 |
 | 3   | Muhammad Fajar M    | F1G125040 |
 
 ---
