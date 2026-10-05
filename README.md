@@ -21,10 +21,11 @@ Oleh karena itu, project ini menggunakan Machine Learning untuk mengklasifikasik
 - Tinggi
 
 ## Anggota Kelompok
-| No.|	Nama	              |NIM
-| 1	 | Muhammad Fajar M	    |F1G125040
-| 2	 | Kallyn Renanda Putri	|F1G125035
-| 3	 | Sindi Aulia	        |F1G125077
+| No.|	Nama	              |NIM      |
+|---|---:|---:|---:|
+| 1	 | Muhammad Fajar M	    |F1G125040|
+| 2	 | Kallyn Renanda Putri	|F1G125035|
+| 3	 | Sindi Aulia	        |F1G125077|
 
 ## Problem
 
