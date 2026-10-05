@@ -1,285 +1,199 @@
-# Prediksi_Volume_Kendaraan-SDG-11
+# prediksi-Tingkat _Kepadatan _Lalu _Lintas-sdg11
 
-# Penerapan Linear Regression untuk Prediksi Volume Kendaraan Berdasarkan Jam dan Hari dalam Mendukung Transportasi Perkotaan Berkelanjutan
+Project AI untuk mengklasifikasikan tingkat kepadatan lalu lintas menggunakan Decision Tree Classifier.
+
+# Klasifikasi Tingkat Kepadatan Lalu Lintas
 
 ## Deskripsi Project
 
-Project ini merupakan penerapan kecerdasan buatan (Artificial Intelligence) untuk memprediksi **volume kendaraan** berdasarkan informasi waktu, khususnya **jam dan hari**, menggunakan algoritma **Linear Regression**.
+Project ini merupakan penerapan kecerdasan buatan (Artificial Intelligence) menggunakan algoritma **Decision Tree Classifier** untuk mengklasifikasikan tingkat kepadatan lalu lintas.
 
-Project ini berkaitan dengan **Sustainable Development Goal (SDG) 11: Sustainable Cities and Communities**, khususnya dalam mendukung terciptanya transportasi perkotaan yang lebih berkelanjutan melalui pemanfaatan data dan teknologi.
-
-Model Machine Learning digunakan untuk mempelajari hubungan antara waktu dengan volume kendaraan. Hasil prediksi dapat digunakan sebagai informasi pendukung untuk memahami pola lalu lintas dan membantu perencanaan transportasi perkotaan.
-
----
+Project ini berkaitan dengan **Sustainable Development Goal (SDG) 11: Sustainable Cities and Communities**, khususnya dalam pemanfaatan teknologi untuk membantu memahami kondisi transportasi perkotaan.
 
 ## Latar Belakang
 
-Volume kendaraan di wilayah perkotaan dapat berbeda-beda berdasarkan waktu, terutama pada jam-jam tertentu. Perubahan volume kendaraan perlu diketahui agar dapat menjadi bahan pertimbangan dalam pengelolaan transportasi perkotaan.
+Kepadatan lalu lintas merupakan salah satu permasalahan yang sering terjadi di kawasan perkotaan. Tingkat kepadatan lalu lintas dapat dipengaruhi oleh waktu, hari, suhu, serta kondisi cuaca.
 
-Oleh karena itu, project ini menggunakan data Metro Interstate Traffic Volume untuk membangun model AI yang dapat memprediksi volume kendaraan berdasarkan karakteristik waktu seperti jam dan hari.
+Oleh karena itu, project ini menggunakan Machine Learning untuk mengklasifikasikan tingkat kepadatan lalu lintas menjadi tiga kategori:
 
-Penerapan Linear Regression diharapkan dapat membantu memberikan perkiraan volume kendaraan sehingga dapat mendukung pengelolaan transportasi yang lebih terencana dan sejalan dengan SDG 11: Sustainable Cities and Communities.
+- Rendah
+- Sedang
+- Tinggi
 
----
-## Kelompok: 11
 ## Anggota Kelompok
+No.	Nama	NIM
+1	Muhammad Fajar M	F1G125040
+2	Kallyn Renanda Putri	F1G125035
+3	Sindi Aulia	F1G125077
 
-| No. | Nama                | NIM       |
-| --- | ------------------  | ----------|
-| 1   | Sindi Aulia         | F1G125077 |
-| 2   | Kallyn Renanda Putri | F1G125035 |
-| 3   | Muhammad Fajar M    | F1G125040 |
+## Problem
 
----
+1. Bagaimana mengklasifikasikan tingkat kepadatan lalu lintas menjadi kategori Rendah, Sedang, dan Tinggi?
+2. Bagaimana penerapan algoritma Decision Tree Classifier untuk melakukan klasifikasi?
+3. Seberapa baik performa model dalam mengklasifikasikan tingkat kepadatan lalu lintas?
 
-## Rumusan Masalah
+## Tujuan
 
-1. Bagaimana melakukan preprocessing dan mengolah data waktu pada dataset **Metro Interstate Traffic Volume** untuk memprediksi volume kendaraan?
+Project ini bertujuan untuk:
 
-2. Bagaimana penerapan algoritma **Linear Regression** untuk memprediksi volume kendaraan berdasarkan jam dan hari?
+1. Mengolah dan membersihkan data lalu lintas.
+2. Melakukan preprocessing dan transformasi data.
+3. Membuat kategori tingkat kepadatan lalu lintas.
+4. Membangun model menggunakan Decision Tree Classifier.
+5. Mengevaluasi performa model.
+6. Melakukan prediksi terhadap data baru.
 
-3. Bagaimana performa model **Linear Regression** dalam memprediksi volume kendaraan berdasarkan hasil evaluasi **MAE, RMSE, dan R² Score**?
+## Dataset
 
+Dataset yang digunakan adalah **Metro Interstate Traffic Volume** dari UCI Machine Learning Repository.
 
----
+Dataset berisi data volume lalu lintas per jam beserta beberapa informasi pendukung, seperti:
 
-## 🎯 Tujuan
+- Waktu
+- Hari
+- Bulan
+- Tahun
+- Hari dalam minggu
+- Suhu
+- Curah hujan
+- Salju
+- Tutupan awan
+- Kondisi cuaca
+- Hari libur
+- Volume lalu lintas
 
-Tujuan project ini adalah:
+Dataset awal memiliki **48.204 data**.
 
-1. Mengolah dan membersihkan dataset **Metro Interstate Traffic Volume**.
+## Preprocessing Data
 
-2. Melakukan preprocessing pada data waktu untuk memperoleh informasi **jam dan hari**.
+Tahapan pengolahan data yang dilakukan:
 
-3. Membuat model prediksi volume kendaraan menggunakan algoritma **Linear Regression**.
+1. Memasukkan dataset CSV.
+2. Memeriksa struktur dan kondisi awal data.
+3. Menghapus data duplikat.
+4. Menangani nilai kosong.
+5. Mengubah format tanggal dan waktu.
+6. Membuat fitur waktu seperti jam, hari, bulan, tahun, dan hari dalam minggu.
+7. Mengubah suhu menjadi Celsius.
+8. Melakukan encoding pada kondisi cuaca.
 
-4. Mengukur performa model menggunakan metrik **MAE, MSE, RMSE, dan R² Score**.
+Setelah proses cleaning, diperoleh **48.187 data**.
 
-5. Melakukan simulasi prediksi volume kendaraan berdasarkan jam dan hari tertentu.
+## Kategori Tingkat Kepadatan
 
----
+Volume lalu lintas diubah menjadi tiga kategori menggunakan batas kuantil:
 
-## 📊 Dataset
+- **Rendah**
+- **Sedang**
+- **Tinggi**
 
-Dataset yang digunakan dalam project ini adalah:
+Kategori tersebut digunakan sebagai target atau label yang akan diprediksi oleh model.
 
-**Metro Interstate Traffic Volume Dataset**
+## Pembagian Data
 
-Dataset berisi data volume lalu lintas kendaraan beserta beberapa informasi yang berkaitan dengan kondisi dan waktu pengamatan.
+Data dibagi menjadi:
 
-Beberapa variabel yang terdapat dalam dataset antara lain:
+- **80% data training:** 38.549 data
+- **20% data testing:** 9.638 data
 
-* `holiday`
-* `temp`
-* `rain_1h`
-* `snow_1h`
-* `clouds_all`
-* `weather_main`
-* `weather_description`
-* `date_time`
-* `traffic_volume`
-
-Variabel utama yang digunakan dalam project ini adalah:
-
-* **`date_time`** → digunakan untuk mendapatkan informasi jam dan hari.
-* **`traffic_volume`** → digunakan sebagai target atau nilai yang akan diprediksi.
-
-Jumlah data pada dataset adalah **48.204 baris dengan 9 kolom**.
-
-Dataset Kaggle
-
-https://www.kaggle.com/datasets/pooriamst/metro-interstate-traffic-volume
----
-
-## ⚙️ Preprocessing Data
-
-Tahapan preprocessing data yang dilakukan adalah:
-
-1. Memasukkan dataset CSV ke Google Colab.
-2. Mengubah dataset menjadi DataFrame menggunakan Pandas.
-3. Memeriksa data awal.
-4. Memeriksa informasi dan tipe data.
-5. Memeriksa nilai kosong pada dataset.
-6. Mengubah kolom `date_time` menjadi format datetime.
-7. Mengekstrak informasi **jam** dari `date_time`.
-8. Mengekstrak informasi **hari dalam minggu** dari `date_time`.
-9. Menentukan fitur yang digunakan untuk model.
-10. Menentukan `traffic_volume` sebagai target prediksi.
-
-Fitur utama yang digunakan dalam model adalah:
-
-* `hour`
-* `day_of_week`
-
-Sedangkan target yang diprediksi adalah:
-
-* `traffic_volume`
-
----
-
-## 🕐 Pembentukan Fitur Waktu
-
-Kolom `date_time` diolah menjadi beberapa informasi waktu.
-
-### Jam
-
-Fitur `hour` menunjukkan jam pengamatan dalam rentang:
-
-**00.00 – 23.00**
-
-### Hari
-
-Fitur `day_of_week` menunjukkan hari dalam satu minggu:
-
-| Nilai | Hari   |
-| ----: | ------ |
-|     0 | Senin  |
-|     1 | Selasa |
-|     2 | Rabu   |
-|     3 | Kamis  |
-|     4 | Jumat  |
-|     5 | Sabtu  |
-|     6 | Minggu |
-
-Informasi tersebut digunakan sebagai input bagi model Linear Regression.
-
----
-
-## Exploratory Data Analysis
-
-Sebelum membuat model, dilakukan analisis terhadap pola volume kendaraan.
-
-Analisis yang dilakukan meliputi:
-
-1. Rata-rata volume kendaraan berdasarkan jam.
-2. Rata-rata volume kendaraan berdasarkan hari.
-3. Visualisasi hubungan waktu dengan volume kendaraan.
-4. Analisis korelasi variabel numerik.
-
-Analisis ini dilakukan untuk mengetahui pola volume kendaraan berdasarkan waktu sebelum model Machine Learning dibuat.
-
----
-
-## ✂️ Pembagian Data
-
-Dataset dibagi menjadi dua bagian:
-
-* **80% data training**
-* **20% data testing**
-
-Data training digunakan untuk melatih model Linear Regression, sedangkan data testing digunakan untuk menguji kemampuan model dalam melakukan prediksi terhadap data yang belum digunakan saat proses training.
-
-Karena dataset memiliki urutan waktu, pembagian data dilakukan berdasarkan urutan data sehingga data masa sebelumnya digunakan untuk training dan data setelahnya digunakan untuk testing.
-
----
+Pembagian dilakukan menggunakan `train_test_split` dengan stratifikasi agar proporsi setiap kategori tetap terjaga.
 
 ## Algoritma
 
-### Linear Regression
+### Decision Tree Classifier
 
-Linear Regression merupakan algoritma Machine Learning yang digunakan untuk memodelkan hubungan antara variabel input dengan variabel target.
+Decision Tree merupakan algoritma Machine Learning yang menggunakan struktur pohon untuk mengambil keputusan berdasarkan fitur yang tersedia.
 
-Dalam project ini, Linear Regression digunakan untuk mempelajari hubungan antara:
+Dalam project ini, Decision Tree digunakan untuk menentukan apakah kondisi lalu lintas termasuk **Rendah, Sedang, atau Tinggi**.
 
-**Jam + Hari → Volume Kendaraan**
+## Hasil Pengujian
 
-Input model:
+Hasil pengujian model:
 
-* `hour`
-* `day_of_week`
+| Model | Accuracy |
+|---|---:|
+| Decision Tree Classifier | **91,18%** |
 
-Target:
+Model berhasil memperoleh akurasi sebesar **91,18%** pada data testing.
 
-* `traffic_volume`
+## Classification Report
 
-Model kemudian digunakan untuk menghasilkan prediksi volume kendaraan berdasarkan kombinasi jam dan hari tertentu.
+| Kategori | Precision | Recall | F1-Score |
+|---|---:|---:|---:|
+| Rendah | 0,95 | 0,95 | 0,95 |
+| Sedang | 0,87 | 0,87 | 0,87 |
+| Tinggi | 0,92 | 0,92 | 0,92 |
 
----
+Hasil tersebut menunjukkan bahwa model dapat melakukan klasifikasi dengan performa yang cukup baik pada ketiga kategori.
 
-## Evaluasi Model
+## Feature Importance
 
-Performa model Linear Regression dievaluasi menggunakan beberapa metrik, yaitu:
+Fitur yang paling berpengaruh terhadap keputusan model adalah:
 
-### MAE (Mean Absolute Error)
+1. **Hour** → 0,630248
+2. **Day of Week** → 0,147220
+3. **Temp C** → 0,071312
+4. **Day** → 0,050348
+5. **Month** → 0,037515
 
-MAE digunakan untuk mengetahui rata-rata selisih absolut antara nilai aktual dan nilai hasil prediksi.
-
-### MSE (Mean Squared Error)
-
-MSE menghitung rata-rata kuadrat kesalahan antara nilai aktual dan hasil prediksi.
-
-### RMSE (Root Mean Squared Error)
-
-RMSE merupakan akar dari MSE dan digunakan untuk mengetahui besarnya kesalahan prediksi dalam satuan yang sama dengan target.
-
-### R² Score
-
-R² Score digunakan untuk mengetahui seberapa besar variasi pada volume kendaraan dapat dijelaskan oleh fitur yang digunakan dalam model.
-
----
+Fitur **hour** menjadi fitur yang paling dominan dalam menentukan klasifikasi tingkat kepadatan lalu lintas.
 
 ## Prediksi Data Baru
 
-Setelah model selesai dilatih, dilakukan simulasi menggunakan data baru.
+Model juga diuji menggunakan data baru dengan kondisi tertentu.
 
-Contohnya adalah melakukan prediksi volume kendaraan pada:
+Contoh data:
 
-* **Hari:** Senin
-* **Jam:** 17.00
+- Jam: 16:00
+- Suhu: 28°C
+- Curah hujan: 0 mm
+- Salju: 0 mm
+- Tutupan awan: 40%
+- Kondisi cuaca: Clear
 
-Model menerima informasi jam dan hari tersebut sebagai input dan menghasilkan estimasi volume kendaraan.
+Hasil prediksi:
 
-Simulasi ini menunjukkan bagaimana model dapat digunakan untuk melakukan prediksi pada kondisi waktu tertentu.
+**Tingkat kepadatan lalu lintas → Tinggi**
 
----
+## Hubungan dengan SDG 11
 
-## Kaitan dengan SDG 11
+Project ini berkaitan dengan **SDG 11 – Sustainable Cities and Communities** karena membahas permasalahan transportasi di kawasan perkotaan.
 
-Project ini berkaitan dengan **SDG 11: Sustainable Cities and Communities**, khususnya pada aspek transportasi perkotaan.
+Pemanfaatan Machine Learning dapat menjadi contoh penggunaan teknologi berbasis data untuk memahami pola kepadatan lalu lintas dan mendukung pengelolaan transportasi yang lebih efektif.
 
-Prediksi volume kendaraan dapat memberikan informasi mengenai pola lalu lintas berdasarkan waktu. Informasi tersebut dapat menjadi salah satu bahan pendukung dalam memahami kondisi lalu lintas dan perencanaan transportasi.
-
-Dengan memanfaatkan Machine Learning, data historis lalu lintas dapat diolah menjadi informasi prediktif yang dapat membantu proses pengambilan keputusan terkait transportasi perkotaan.
-
-Namun, hasil prediksi dalam project ini merupakan **informasi pendukung**, bukan satu-satunya dasar dalam menentukan kebijakan transportasi.
-
----
+Project ini merupakan **project pembelajaran**, sehingga hasil prediksi belum digunakan sebagai sistem pengaturan lalu lintas secara langsung.
 
 ## Kesimpulan
 
-Project ini menerapkan algoritma **Linear Regression** untuk memprediksi volume kendaraan berdasarkan informasi **jam dan hari** menggunakan dataset **Metro Interstate Traffic Volume**.
+Project ini berhasil menerapkan **Decision Tree Classifier** untuk mengklasifikasikan tingkat kepadatan lalu lintas menjadi tiga kategori, yaitu Rendah, Sedang, dan Tinggi.
 
-Data `date_time` diolah untuk memperoleh fitur `hour` dan `day_of_week`, sedangkan `traffic_volume` digunakan sebagai target prediksi.
+Model memperoleh akurasi sebesar **91,18%** pada data testing. Fitur yang paling berpengaruh adalah **jam (`hour`)** dengan nilai feature importance sebesar **0,630248**.
 
-Model kemudian dilatih menggunakan data training dan diuji menggunakan data testing. Performa model dievaluasi menggunakan **MAE, MSE, RMSE, dan R² Score**.
+Hasil project menunjukkan bahwa Machine Learning dapat digunakan untuk membantu memahami pola kepadatan lalu lintas berdasarkan data waktu dan kondisi cuaca.
 
-Hasil prediksi dapat digunakan sebagai informasi pendukung untuk memahami pola volume kendaraan berdasarkan waktu. Pemanfaatan informasi tersebut berkaitan dengan upaya mendukung **transportasi perkotaan yang lebih berkelanjutan** sebagai bagian dari **SDG 11**.
-
----
+Project ini juga mendukung pembahasan **SDG 11** melalui pemanfaatan teknologi untuk permasalahan transportasi perkotaan.
 
 ## Teknologi yang Digunakan
 
-* Python
-* Google Colab
-* Pandas
-* NumPy
-* Scikit-learn
-* Matplotlib
-* Seaborn
-* Joblib
-
----
+- Python
+- Google Colab
+- Pandas
+- Scikit-learn
+- Matplotlib
+- UCI Machine Learning Repository
+- GitHub
 
 ## File Project
 
-`Project_SD G11_Traffic_Volume_Linear_Regression.ipynb` merupakan notebook Google Colab yang berisi proses:
+`Tingkat_Kepadatan_Lalu_Lintas.ipynb` merupakan notebook yang berisi proses:
 
-* Pengolahan dataset
-* Exploratory Data Analysis
-* Preprocessing
-* Pembentukan fitur
-* Training Linear Regression
-* Prediksi
-* Evaluasi model
-* Simulasi prediksi data baru
-* Visualisasi hasil
+- Pengumpulan data
+- Data cleaning
+- Preprocessing
+- Feature engineering
+- Pembuatan kategori
+- Training model
+- Evaluasi model
+- Feature importance
+- Prediksi data baru
+- Kesimpulan
