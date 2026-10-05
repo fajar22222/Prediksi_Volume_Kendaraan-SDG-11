@@ -49,6 +49,8 @@ Project ini bertujuan untuk:
 
 Dataset yang digunakan adalah **Metro Interstate Traffic Volume** dari UCI Machine Learning Repository.
 
+Sumber: UCI Machine Learning Repository. https://doi.org/10.24432/C5X60B.
+
 Dataset berisi data volume lalu lintas per jam beserta beberapa informasi pendukung, seperti:
 
 - Waktu
